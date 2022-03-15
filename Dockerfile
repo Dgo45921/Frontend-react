@@ -1,14 +1,11 @@
 FROM node:17-alpine3.15
 
-WORKDIR /user/src/app
+WORKDIR /frontend
 
-COPY ./package.json ./
-
-
-RUN npm install
+ENV PATH = "./node-modules/.bin$PATH"
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
 CMD ["npm", "start"]
